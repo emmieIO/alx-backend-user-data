@@ -17,9 +17,11 @@ AUTH_TYPE = os.getenv('AUTH_TYPE')
 
 if AUTH_TYPE:
     if AUTH_TYPE == 'auth':
-        # Import Auth class and create an instance
         from api.v1.auth.auth import Auth
         auth = Auth()
+    elif AUTH_TYPE == 'basic_auth':
+        from api.v1.auth.basic_auth import BasicAuth
+        auth = BasicAuth()
 
 EXCLUDED_PATHS = [
     '/api/v1/status/',
