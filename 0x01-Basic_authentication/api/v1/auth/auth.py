@@ -15,11 +15,13 @@ class Auth:
         """
         if path is None:
             return True
-        elif len(excluded_paths) == 0 or excluded_paths is None:
+        if len(excluded_paths) == 0 or excluded_paths is None:
             return True
-        elif path in excluded_paths:
+        if path in excluded_paths:
             return False
         else:
+            if not path.endswith('/'):
+                path += '/'
             for route in excluded_paths:
                 if route.endswith("/") and route == path:
                     return False
