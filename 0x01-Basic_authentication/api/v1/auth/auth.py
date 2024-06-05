@@ -13,7 +13,19 @@ class Auth:
         """Used to protect authenticated routes
            args: path:str, excluded_paths:List[str]
         """
-        return False
+        if path is None:
+            return True
+        elif len(excluded_paths) == 0 or excluded_paths is None:
+            return True
+        elif path in excluded_paths:
+            return False
+        else:
+            if not path.endswith('/'):
+                path += '/'
+            for route in excluded_paths:
+                if route.endswith("/") and route == path:
+                    return False
+            return True
 
     def authorization_header(self, request=None) -> str:
         """Authorization header"""
