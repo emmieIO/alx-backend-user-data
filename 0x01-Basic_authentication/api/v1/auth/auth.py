@@ -10,7 +10,9 @@ class Auth:
     Manages the API authentication
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """To be used Later"""
+        """Used to protect authenticated routes
+           args: path:str, excluded_paths:List[str]
+        """
         return False
 
     def authorization_header(self, request=None) -> str:
